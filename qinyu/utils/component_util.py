@@ -1,6 +1,6 @@
 import os
 from qinyu_common.io import load_json
-from qinyu_common import object_from_classpath
+from qinyu_common.reflection import object_from_classpath
 
 def load_from_meta_file(save_dir: str, verbose=True, **kwargs):
     load_path = save_dir

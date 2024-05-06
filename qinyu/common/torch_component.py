@@ -16,11 +16,10 @@ class TorchComponent(Component, ABC):
     def load_config(self, save_dir: str, file_name='config.json', **kwargs):
         self.config.load_json(os.path.join(save_dir, file_name))
         self.config.update(kwargs)
-        for k, v in self.config:
+        for k, v in self.config.items():
             if isinstance(v, dict) and 'classpath' in v:
                 self.config[k] = Configurable.from_config(v)
         self.on_config_ready(**self.config, save_dir = save_dir)
-        print()
 
 
     def load(self, save_dir: str, devices=None, verbose=True, **kwargs):
